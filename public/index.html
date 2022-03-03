@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <link
+        href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALilTJ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfX19SAAAAAAAAAAAAAAAAAAAAAC4pk//AAAAAAAAAAAAAAAAcWdRpZyQb78AAAAAAAAAAAAAAAAAAAAAjY2NLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcP4AAAAAkIE+XZ2PcP+dj3D/e25SCp2PcP9BOS4SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcP+dj3D/AAAAAJ2PcP8AAAAAuKZP/52PcP+dj3D/XVVDaJOFajwAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcNSdj3D/AAAAAJ2PcP+dj3D/nY9w/52PcP8AAAAAAAAAAJ2PcP+dj3DpAAAAAAAAAAAAAAAAAAAAAAAAAACdj3D/AAAAAJ2PcP+dj3D/nY9wwZ2PcP+dj3D/AAAAAGtiTjwAAAAAnY9w/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcP+dj3D/nY9w/52PcP8FBQMEAAAAAAAAAACdj3D/mJNsZwAAAAC4pk//AAAAAAAAAAAAAAAAAAAAAJ2PcP+dj3D/AAAAAJ2PcP+dj3D/o6OjSgAAAAAAAAAAnY9w/52PcP+dj3D/AAAAALimT7AAAAAAmZmZ/wAAAAAAAAAAnY9w/52PcP+dj3D/mZmZ/wAAAACdj3D/nY9w/0Q/MSQAAAAAAAAAALimT/8AAAAAuKZP+JmZmf+ZmZn/AAAAAAAAAACwqlVLmZmZ/yokHAOdj3D/nY9w2J2PcP+dj3D/AAAAALimT/+4pk//AAAAAAAAAACZmZn/mZmZ/5mZmf+ZmZn/AAAAAAAAAABFRAMBnY9w/52PcP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ/5mZmf+ZmZntAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJmZmf+ZmZn/mZmZ2gAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAB//wAA7n8AAPZfAADlHwAAyGcAANB3AADh2wAAycUAAGE6AAA6EwAADn8AAP//AAD/HwAA/x8AAA=="
+        rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <title>Document</title>
+</head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="./js/client.js"></script>
+
+<body>
+    <div class="container">
+        <div class="navbar" id="left">
+            <div id="logo">💯</div>
+            <div class="nav-option">
+                <a href="">Login</a>
+                <a href="/devices-list">Devices List</a>
+                <a href="/add-new-device">Add New Device</a>
+            </div>
+        </div>
+        <div id="right">
+            <div class="promote">
+                Smart Devices & Internet of Things Solutions.
+            </div>
+            <div class="device">
+                <div id="name"><%= device.name %></div>
+                <div id="description"> Description
+                </div>
+            </div>
+            <div class="control-feature">
+                <div id="control">
+                    Control operations
+                    <br>
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" id="check">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div id="history">
+                    Control history
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Designed and engineered by <a href="mailto:nguyentruongkhang22@gmail.com">Khang Truong Nguyen</a>
+        </p>
+        <div class="social">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-linkedin "></a>
+            <a href="#" class="fa fa-google "></a>
+        </div>
+
+
+    </footer>
+</body>
+
+</html>
