@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const router = require('./routes/routes');
 const url = 'http://localhost:3000/';
+const path = require('path');
 
 // SETUP
 dotenv.config({ path: './config.env' });
@@ -23,15 +24,14 @@ mongoose
     .catch((e) => console.log(e));
 
 // MIDDLEWARE
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/device', express.static(path.join(__dirname, 'public')));
+
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 const io = new Server(server);
-
 // ROUTING
-app.get('/', (req, res) => {
-    res.sendFile(`${__dirname}/index.html`);
-});
+app.use('/', router);
 
 // WEBSOCKET CONNECTION
 io.on('connection', (socket) => {

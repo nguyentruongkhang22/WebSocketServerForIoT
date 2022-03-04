@@ -32,9 +32,28 @@
         </div>
         <div id="right">
             <div class="promote">Smart Devices & Internet of Things Solutions.</div>
-            <div class="device-list">
-                <h2>Devices</h2>
-                <!-- Preserved -->
+            <div class="device">
+                <h2 id="name">
+                    <!-- Device Name -->
+                </h2>
+                <div id="description">Description</div>
+            </div>
+            <div class="control-feature">
+                <div id="control">
+                    <h3>Control Operations</h3>
+                    <br />
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                        <input type="checkbox" onchange="change(this)" id="check" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div id="history-container">
+                    <h3>Control History</h3>
+                    <div id="history">
+                        <!-- Preserved for new actions -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -48,17 +67,36 @@
             <a href="#" class="fa fa-google"></a>
         </div>
     </footer>
-    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
     <script>
         const url = 'http://localhost:3000';
-        const loadAllDevice = async () => {
-            const res = await (await fetch(`${url}/api/v1/devices`)).json();
-            const devices = await document.querySelector('.device-list');
-            res.data.forEach((device) => {
-                devices.innerHTML += `<a href="/device/${device._id}">🟠${device.name}</a>`;
-            });
+        const socket = io();
+        socket.on('on', () => {
+            console.log('haha');
+        });
+
+        const deviceInfo = async () => {
+            const id = window.location.pathname.replace('/device/', '');
+            const res = await (await fetch(`${url}/api/v1/device/${id}`)).json();
+            document.getElementById('name').innerHTML = res.data.name;
+
         };
-        loadAllDevice();
+        deviceInfo();
+
+        const change = async (thisElement) => {
+            const currentTime = await new Date().toUTCString();
+            socket.emit('change', thisElement.checked);
+            const historyActions = await document.getElementById('history');
+            historyActions.innerHTML =
+                `<p>Device turn: <strong>${thisElement.checked ? 'ON' : 'OFF'}</strong> at ${currentTime}</p>` +
+                historyActions.innerHTML;
+        };
+
+
+
+        socket.on('testing', (e) => {
+            document.getElementById('check').checked = true;
+        });
     </script>
 </body>
 

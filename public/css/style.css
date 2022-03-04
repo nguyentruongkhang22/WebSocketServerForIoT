@@ -90,6 +90,7 @@ body {
     color: #41b3a3;
     color: #c38d9e;
     color: white;
+    overflow-x: hidden;
 }
 
 a {
@@ -103,6 +104,10 @@ footer {
     text-align: center;
     position: relative;
 }
+
+/* .device-list > a { */
+/* border: solid 1px black; */
+/* } */
 
 .social {
     position: absolute;
@@ -158,6 +163,8 @@ footer {
 
 .promote {
     font-size: larger;
+    margin-bottom: 5vh;
+    border-bottom: #e8a87c 2px solid;
 }
 
 .device {
