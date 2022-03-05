@@ -9,6 +9,10 @@ const router = express.Router();
 // router.get('/all-device', controller.getDevicesList);
 router.get('/device/:id', controller.controlDevice);
 router.route('/api/v1/devices').get(controller.getAllDevices).post(controller.addNewDevice);
-router.route('/api/v1/device/:id').delete(controller.removeDevice).get(controller.getDevice);
+router
+    .route('/api/v1/device/:id')
+    .delete(controller.removeDevice)
+    .get(controller.getDevice)
+    .patch(controller.updateDevice);
 
 module.exports = router;

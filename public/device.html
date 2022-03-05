@@ -16,7 +16,7 @@
         href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALilTJ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfX19SAAAAAAAAAAAAAAAAAAAAAC4pk//AAAAAAAAAAAAAAAAcWdRpZyQb78AAAAAAAAAAAAAAAAAAAAAjY2NLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcP4AAAAAkIE+XZ2PcP+dj3D/e25SCp2PcP9BOS4SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcP+dj3D/AAAAAJ2PcP8AAAAAuKZP/52PcP+dj3D/XVVDaJOFajwAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcNSdj3D/AAAAAJ2PcP+dj3D/nY9w/52PcP8AAAAAAAAAAJ2PcP+dj3DpAAAAAAAAAAAAAAAAAAAAAAAAAACdj3D/AAAAAJ2PcP+dj3D/nY9wwZ2PcP+dj3D/AAAAAGtiTjwAAAAAnY9w/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcP+dj3D/nY9w/52PcP8FBQMEAAAAAAAAAACdj3D/mJNsZwAAAAC4pk//AAAAAAAAAAAAAAAAAAAAAJ2PcP+dj3D/AAAAAJ2PcP+dj3D/o6OjSgAAAAAAAAAAnY9w/52PcP+dj3D/AAAAALimT7AAAAAAmZmZ/wAAAAAAAAAAnY9w/52PcP+dj3D/mZmZ/wAAAACdj3D/nY9w/0Q/MSQAAAAAAAAAALimT/8AAAAAuKZP+JmZmf+ZmZn/AAAAAAAAAACwqlVLmZmZ/yokHAOdj3D/nY9w2J2PcP+dj3D/AAAAALimT/+4pk//AAAAAAAAAACZmZn/mZmZ/5mZmf+ZmZn/AAAAAAAAAABFRAMBnY9w/52PcP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ/5mZmf+ZmZntAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJmZmf+ZmZn/mZmZ2gAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAB//wAA7n8AAPZfAADlHwAAyGcAANB3AADh2wAAycUAAGE6AAA6EwAADn8AAP//AAD/HwAA/x8AAA=="
         rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="./css/style.css" />
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -36,7 +36,10 @@
                 <h2 id="name">
                     <!-- Device Name -->
                 </h2>
-                <div id="description">Description</div>
+                <div id="description">
+                    <h4>Description:</h4>
+                    <!-- Preserved for description -->
+                </div>
             </div>
             <div class="control-feature">
                 <div id="control">
@@ -71,14 +74,17 @@
     <script>
         const url = 'http://localhost:3000';
         const socket = io();
+        const id = window.location.pathname.replace('/device/', '');
+
         socket.on('on', () => {
             console.log('haha');
         });
 
         const deviceInfo = async () => {
-            const id = window.location.pathname.replace('/device/', '');
             const res = await (await fetch(`${url}/api/v1/device/${id}`)).json();
             document.getElementById('name').innerHTML = res.data.name;
+            document.getElementById('description').innerHTML += `<p>${res.data.description}</p>`;
+
 
         };
         deviceInfo();
@@ -90,9 +96,11 @@
             historyActions.innerHTML =
                 `<p>Device turn: <strong>${thisElement.checked ? 'ON' : 'OFF'}</strong> at ${currentTime}</p>` +
                 historyActions.innerHTML;
+
+            axios.patch(`http://localhost:3000/api/v1/device/${id}`, {
+                "deviceStatus": thisElement.checked
+            });
         };
-
-
 
         socket.on('testing', (e) => {
             document.getElementById('check').checked = true;

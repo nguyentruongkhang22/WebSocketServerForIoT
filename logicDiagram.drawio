@@ -1,0 +1,58 @@
+<mxfile host="65bd71144e">
+    <diagram id="QMdnXOf88zgAGLv768P3" name="Page-1">
+        <mxGraphModel dx="1001" dy="888" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="119" y="42" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Web Browser" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-92" y="181" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="ESP32" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="371" y="181" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="GET sau một khoảng thời gian để thay đổi thiết bị gián tiếp" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=35;" vertex="1" parent="1">
+                    <mxGeometry x="194" y="161" width="177" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="POST Khi thiết bị thay đổi bằng cách trực tiếp" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=35;" vertex="1" parent="1">
+                    <mxGeometry x="261" y="79" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Server thay đổi thông tin được lưu trong Database" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="85" y="-7" width="164" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="53" y="195" as="sourcePoint"/>
+                        <mxPoint x="135" y="114" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Gửi thông tin thay đổi trên giao diên người dùng" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-45;" vertex="1" parent="1">
+                    <mxGeometry x="34" y="161" width="154" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="102" y="72" as="sourcePoint"/>
+                        <mxPoint x="14" y="159" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="Gửi thông tin thay đổi từ Database lên giao diện người dùng" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-45;" vertex="1" parent="1">
+                    <mxGeometry x="-58" y="72" width="196" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="366" y="152" as="sourcePoint"/>
+                        <mxPoint x="258" y="73" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="247" y="109" as="sourcePoint"/>
+                        <mxPoint x="347" y="181" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

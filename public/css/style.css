@@ -105,9 +105,10 @@ footer {
     position: relative;
 }
 
-/* .device-list > a { */
-/* border: solid 1px black; */
-/* } */
+.device-list {
+    display: flex;
+    flex-direction: column;
+}
 
 .social {
     position: absolute;

@@ -5,6 +5,11 @@ const deviceSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    description: {
+        type: String,
+        required: true,
+        default: 'Indoor Device',
+    },
     deviceStatus: {
         type: Boolean,
         default: false,
