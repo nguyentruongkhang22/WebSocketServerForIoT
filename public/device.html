@@ -80,10 +80,21 @@
             console.log('haha');
         });
 
+        socket.on('sendFromDevice', async (statusChange, deviceId) => {
+            console.log(deviceId === id)
+            if (deviceId === id) {
+                // const element = await document.getElementById('check');
+                // element.checked = statusChange
+                // console.log('haha')
+                location.reload();
+            }
+        });
+
         const deviceInfo = async () => {
             const res = await (await fetch(`${url}/api/v1/device/${id}`)).json();
             document.getElementById('name').innerHTML = res.data.name;
             document.getElementById('description').innerHTML += `<p>${res.data.description}</p>`;
+            document.getElementById('check').checked = res.data.deviceStatus;
         };
         deviceInfo();
 
@@ -100,9 +111,6 @@
             });
         };
 
-        socket.on('testing', (e) => {
-            document.getElementById('check').checked = true;
-        });
     </script>
 </body>
 

@@ -45,8 +45,9 @@ io.on('connection', (socket) => {
         socket.emit('testing', true);
     }, 3000);
 
-    socket.on('post', (a) => {
-        console.log(a, 'khang cu dai');
+    socket.on('patch', async (statusChange, deviceId) => {
+        console.log(statusChange, deviceId);
+        socket.broadcast.emit('sendFromDevice', statusChange, deviceId);
     });
 });
 

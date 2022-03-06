@@ -28,8 +28,6 @@ exports.getAllDevices = async (req, res) => {
 
 exports.addNewDevice = async (req, res) => {
     try {
-        await socket.emit('post', req.body);
-
         const devices = await Device.create(req.body);
         res.status(200).json({
             status: 'success',
@@ -62,6 +60,7 @@ exports.removeDevice = async (req, res) => {
 
 exports.updateDevice = async (req, res) => {
     try {
+        socket.emit('patch', req.body, req.params.id);
         const device = await Device.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true,
