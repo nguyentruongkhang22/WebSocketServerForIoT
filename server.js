@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
 
     socket.on('patch', async (statusChange, deviceId) => {
         console.log(statusChange, deviceId);
-        socket.broadcast.emit('sendFromDevice', statusChange, deviceId);
+        socket.broadcast.emit('sendFromDevice', statusChange.deviceStatus, deviceId);
     });
 });
 

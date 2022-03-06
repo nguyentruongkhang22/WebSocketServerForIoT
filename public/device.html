@@ -81,12 +81,14 @@
         });
 
         socket.on('sendFromDevice', async (statusChange, deviceId) => {
-            console.log(deviceId === id)
+            console.log(deviceId === id);
             if (deviceId === id) {
-                // const element = await document.getElementById('check');
-                // element.checked = statusChange
-                // console.log('haha')
-                location.reload();
+                const currentTime = await new Date().toUTCString();
+
+                const historyActions = await document.getElementById('history');
+                historyActions.innerHTML =
+                    `<p>Device turn: <strong>${statusChange ? 'ON' : 'OFF'}</strong> at ${currentTime}</p>` +
+                    historyActions.innerHTML;
             }
         });
 
