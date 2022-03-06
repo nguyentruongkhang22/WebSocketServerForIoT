@@ -1,4 +1,13 @@
 const Device = require('../model/deviceModel');
+const { io } = require('socket.io-client');
+const url = 'http://localhost:3000/';
+
+var socket = io.connect(url, { reconnect: true });
+
+// Add a connect listener
+socket.on('connect', function (socket) {
+    console.log('Node Client Connected!');
+});
 
 // BELOW IS CRUD OPERATIONS
 exports.getAllDevices = async (req, res) => {
@@ -19,6 +28,8 @@ exports.getAllDevices = async (req, res) => {
 
 exports.addNewDevice = async (req, res) => {
     try {
+        await socket.emit('post', req.body);
+
         const devices = await Device.create(req.body);
         res.status(200).json({
             status: 'success',

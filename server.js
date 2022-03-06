@@ -16,6 +16,7 @@ const PORT = process.env.PORT;
 const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 const app = express();
 const server = http.createServer(app);
+
 mongoose
     .connect(DB, {
         useNewUrlParser: true,
@@ -30,6 +31,7 @@ app.use('/device', express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 const io = new Server(server);
+
 // ROUTING
 app.use('/', router);
 
@@ -42,6 +44,10 @@ io.on('connection', (socket) => {
     setTimeout(() => {
         socket.emit('testing', true);
     }, 3000);
+
+    socket.on('post', (a) => {
+        console.log(a, 'khang cu dai');
+    });
 });
 
 // SERVER

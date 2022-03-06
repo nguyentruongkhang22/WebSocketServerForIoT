@@ -84,8 +84,6 @@
             const res = await (await fetch(`${url}/api/v1/device/${id}`)).json();
             document.getElementById('name').innerHTML = res.data.name;
             document.getElementById('description').innerHTML += `<p>${res.data.description}</p>`;
-
-
         };
         deviceInfo();
 
