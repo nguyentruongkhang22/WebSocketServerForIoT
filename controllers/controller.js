@@ -1,6 +1,6 @@
 const Device = require('../model/deviceModel');
 const { io } = require('socket.io-client');
-const url = 'http://localhost:3000/';
+const url = process.env.ENV === 'development' ? 'http://localhost:3000/' : '..';
 
 var socket = io.connect(url, { reconnect: true });
 

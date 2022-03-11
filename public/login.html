@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        font-size: large;
+        margin: auto;
+        background: linear-gradient(0.3turn, #41b3a3, whitesmoke);
+        color: #e8a87c;
+        color: #41b3a3;
+        color: #c38d9e;
+        color: white;
+        overflow-x: hidden;
+    }
+
+    .container {
+        margin: 30vh 30vw;
+        border: solid 1px black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #e8a87c;
+        padding: 50px;
+        background-color: whitesmoke;
+        border-radius: 10px;
+    }
+
+    #login-form {
+        display: flex;
+        flex-direction: column;
+        width: 20vw
+    }
+
+    #register-form {
+        /* visibility: hidden; */
+        display: none;
+        flex-direction: column;
+        width: 20vw
+    }
+
+    button {
+        /* border: none; */
+        border: groove;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    span {
+        color: #e8a87c;
+        font-size: large
+    }
+
+    .no-account {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <form action="/login" method="post" id="login-form" autocomplete="off">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <br>
+            <button type="submit"><span style="color: #e8a87c; font-size:large">Login</span></button>
+        </form>
+        <form action="/register" method="post" id="register-form" autocomplete="off">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <br>
+            <button type="submit"><span>Register</span></button>
+        </form>
+
+        <div class="no-account">
+            <h4>Don't have an account yet?</h4>
+            <button style="border: none;" onclick="register()"><span id="promo">Register NOW!</span></button>
+        </div>
+        <div class="account" style="display: none;">
+            <h4>Already have an account?</h4>
+            <button style="border: none;" onclick="login()"><span id="promo">Login!</span></button>
+        </div>
+    </div>
+
+    <script>
+        const register = (thisElement) => {
+            document.getElementById('login-form').style.display = "none";
+            document.getElementById('register-form').style.display = "flex";
+            document.querySelector('.no-account').style.display = "none";
+            document.querySelector('.account').style.display = "flex";
+        }
+
+        const login = (thisElement) => {
+            document.getElementById('login-form').style.display = "flex";
+            document.getElementById('register-form').style.display = "none";
+            document.querySelector('.no-account').style.display = "flex";
+            document.querySelector('.account').style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
