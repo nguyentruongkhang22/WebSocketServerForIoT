@@ -7,6 +7,9 @@ const router = express.Router();
 
 router.get('/device/:id', controller.controlDevice);
 router.route('/api/v1/devices').get(controller.getAllDevices).post(controller.addNewDevice);
+router.route('/login').get(controller.loadLoginPage).post(controller.login);
+router.route('/register').post(controller.createNewUser).get(controller.loadRegisterPage);
+
 router
     .route('/api/v1/device/:id')
     .delete(controller.removeDevice)

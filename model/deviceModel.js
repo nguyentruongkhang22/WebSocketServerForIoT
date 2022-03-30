@@ -1,6 +1,10 @@
 const { default: mongoose } = require('mongoose');
 
 const deviceSchema = mongoose.Schema({
+    owner: {
+        type: String,
+        required: true,
+    },
     name: {
         type: String,
         required: true,

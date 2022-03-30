@@ -1,5 +1,7 @@
 const Device = require('../model/deviceModel');
 const { io } = require('socket.io-client');
+const User = require('../model/userModel');
+
 const url = process.env.ENV === 'development' ? 'http://localhost:3000/' : '..';
 
 var socket = io.connect(url, { reconnect: true });
@@ -103,5 +105,47 @@ exports.getDevice = async (req, res) => {
 exports.controlDevice = async (req, res) => {
     const device = await Device.findById(req.params.id);
     console.log(req.params);
-    res.sendFile(`device.html`, { root: './public' });
+    res.sendFile(`device.html`, { root: './public/html' });
+};
+
+exports.loadLoginPage = async (req, res) => {
+    res.sendFile(`login.html`, { root: './public/html' });
+};
+
+exports.loadRegisterPage = (req, res) => {
+    res.sendFile(`register.html`, { root: './public/html' });
+};
+
+exports.createNewUser = async (req, res) => {
+    try {
+        const user = await User.create({
+            username: req.body.username,
+            password: req.body.password,
+        });
+
+        if (!user) {
+            console.log('fucl');
+        } else {
+            res.sendFile(`login.html`, { root: './public/html' });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+exports.login = async (req, res) => {
+    try {
+        const user = await User.findOne({
+            username: req.body.username,
+            password: req.body.password,
+        });
+        if (!user) {
+            res.sendFile(`login.html`, { root: './public/html' });
+        } else {
+            console.log(user);
+            res.redirect('/');
+        }
+    } catch (error) {
+        console.log(error);
+    }
 };
