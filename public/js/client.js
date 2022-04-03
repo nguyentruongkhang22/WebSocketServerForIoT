@@ -1,6 +1,6 @@
-// const url = 'http://localhost:3000/'
+// const url = 'http://localhost:3000'
 
-const url = 'https://do-an-212.herokuapp.com/';
+const url = 'https://do-an-212.herokuapp.com';
 const socket = io();
 const id = window.location.pathname.replace('/device/', '');
 
