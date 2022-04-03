@@ -50,10 +50,10 @@
     </footer>
     <!-- <script src="/socket.io/socket.io.js"></script> -->
     <script>
-        const url =
-            process.env.ENV === 'development'
-                ? 'http://localhost:3000/'
-                : 'https://do-an-212.herokuapp.com/';
+        // const url ='http://localhost:3000/';
+        const url = 'https://do-an-212.herokuapp.com/';
+
+
         const loadAllDevice = async () => {
             const res = await (await fetch(`${url}/api/v1/devices`)).json();
             const devices = await document.querySelector('.device-list');
