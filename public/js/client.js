@@ -43,7 +43,7 @@ const change = async (thisElement) => {
             thisElement.checked ? 'ON' : 'OFF'
         }</strong> at ${currentTime}</p>` + historyActions.innerHTML;
 
-    axios.patch(`http://localhost:3000/api/v1/device/${id}`, {
+    axios.patch(`${url}/api/v1/device/${id}`, {
         deviceStatus: thisElement.checked,
     });
 };
