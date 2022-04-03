@@ -2,7 +2,10 @@ const Device = require('../model/deviceModel');
 const { io } = require('socket.io-client');
 const User = require('../model/userModel');
 
-const url = process.env.ENV === 'development' ? 'http://localhost:3000/' : '..';
+const url =
+    process.env.ENV === 'development'
+        ? 'http://localhost:3000/'
+        : 'https://do-an-212.herokuapp.com/';
 
 var socket = io.connect(url, { reconnect: true });
 
