@@ -17,8 +17,9 @@ socket.on('sendFromDevice', async (statusChange, deviceId) => {
         //     historyActions.innerHTML;
         document.getElementById('check').remove();
         document.querySelector('.switch').innerHTML =
-            `<input type="checkbox" onchange="change(this)" id="check" ${statusChange ? 'checked' : ''}/>` +
-            document.querySelector('.switch').innerHTML;
+            `<input type="checkbox" onchange="change(this)" id="check" ${
+                statusChange ? 'checked' : ''
+            }/>` + document.querySelector('.switch').innerHTML;
     }
 });
 
@@ -35,8 +36,9 @@ const change = async (thisElement) => {
     socket.emit('change', thisElement.checked);
     const historyActions = await document.getElementById('history');
     historyActions.innerHTML =
-        `<p>Device turn: <strong>${thisElement.checked ? 'ON' : 'OFF'}</strong> at ${currentTime}</p>` +
-        historyActions.innerHTML;
+        `<p>Device turn: <strong>${
+            thisElement.checked ? 'ON' : 'OFF'
+        }</strong> at ${currentTime}</p>` + historyActions.innerHTML;
 
     axios.patch(`http://localhost:3000/api/v1/device/${id}`, {
         deviceStatus: thisElement.checked,
