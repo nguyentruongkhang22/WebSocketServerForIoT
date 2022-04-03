@@ -5,6 +5,8 @@ const url =
 const socket = io();
 const id = window.location.pathname.replace('/device/', '');
 
+console.log(process.env.ENV);
+
 socket.on('on', () => {
     console.log('haha');
 });
