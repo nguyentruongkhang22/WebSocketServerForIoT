@@ -4,8 +4,6 @@ const url = 'https://do-an-212.herokuapp.com';
 const socket = io();
 const id = window.location.pathname.replace('/device/', '');
 
-console.log(process.env.ENV);
-
 socket.on('on', () => {
     console.log('haha');
 });
