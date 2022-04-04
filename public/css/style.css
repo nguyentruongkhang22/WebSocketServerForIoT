@@ -235,8 +235,7 @@ footer {
 }
 
 @media (max-width: 800px) {
-    /* CSS that should be displayed if width is equal to or less than 800px goes here */
-    body {
+    /* body {
         font-family: 'Roboto', sans-serif;
         font-size: large;
         margin: auto;
@@ -244,8 +243,8 @@ footer {
         color: white;
         overflow-x: hidden;
         /* height: 100%; */
-        width: 100%;
-    }
+    /* width: 100%;
+    } */
     .navbar {
         display: none;
     }
@@ -262,6 +261,7 @@ footer {
     .container {
         width: 130vw;
         height: 80vh;
+        overflow: hidden;
     }
 
     footer {
