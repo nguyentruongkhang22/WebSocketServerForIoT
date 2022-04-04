@@ -235,16 +235,15 @@ footer {
 }
 
 @media (max-width: 800px) {
-    /* body {
+    body {
         font-family: 'Roboto', sans-serif;
         font-size: large;
         margin: auto;
-        background: linear-gradient(0.3turn, #41b3a3, whitesmoke);
         color: white;
         overflow-x: hidden;
-        /* height: 100%; */
-    /* width: 100%;
-    } */
+        width: 130vw;
+        height: 130vh;
+    }
     .navbar {
         display: none;
     }
@@ -259,8 +258,8 @@ footer {
     }
 
     .container {
-        width: 130vw;
-        height: 130vh;
+        width: 100%;
+        height: 100%;
         overflow: auto;
     }
 
