@@ -82,7 +82,7 @@ input:checked + .slider:before {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: large;
     margin: auto;
     background: linear-gradient(0.3turn, #41b3a3, whitesmoke);
@@ -237,14 +237,14 @@ footer {
 @media (max-width: 800px) {
     /* CSS that should be displayed if width is equal to or less than 800px goes here */
     body {
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: large;
         margin: auto;
         background: linear-gradient(0.3turn, #41b3a3, whitesmoke);
         color: white;
-        overflow-x: visible;
-        height: 100%;
-        width: 120%;
+        overflow-x: hidden;
+        /* height: 100%; */
+        width: 100%;
     }
     .navbar {
         display: none;
