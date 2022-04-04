@@ -1,15 +1,34 @@
-// const url = 'http://localhost:3000'
-
-const url = 'https://do-an-212.herokuapp.com';
+// DEPENDENCIES
 const socket = io();
-const id = window.location.pathname.replace('/device/', '');
 
+// CONFIGS
+// const url = 'http://localhost:3000';
+const url = 'https://do-an-212.herokuapp.com';
+
+// PARSE INFOS FROM URL
+const pathName = window.location.pathname.split('/');
+const deviceType = pathName[pathName.length - 2];
+const id = pathName[pathName.length - 1];
+
+// RENDER DEVICE INFO
+(async () => {
+    const res = await (await fetch(`${url}/api/v1/device/${id}`)).json();
+    document.getElementById('name').innerHTML = res.data.name;
+    document.getElementById('description').innerHTML += `<p>${res.data.description}</p>`;
+    if (deviceType === 'sensor') {
+        document.getElementById('humidity-onchange').innerHTML = res.data.humidity;
+    } else if (deviceType === 'regDevice') {
+        document.getElementById('check').checked = res.data.deviceStatus;
+    }
+})();
+
+// WEBSOCKET ON CONNECT
 socket.on('on', () => {
     console.log('haha');
 });
 
+// HANDLE CHANGES FROM OTHER SOURCE
 socket.on('sendFromDevice', async (statusChange, deviceId) => {
-    console.log(deviceId === id);
     if (deviceId === id) {
         // const currentTime = await new Date().toUTCString();
 
@@ -25,14 +44,7 @@ socket.on('sendFromDevice', async (statusChange, deviceId) => {
     }
 });
 
-const deviceInfo = async () => {
-    const res = await (await fetch(`${url}/api/v1/device/${id}`)).json();
-    document.getElementById('name').innerHTML = res.data.name;
-    document.getElementById('description').innerHTML += `<p>${res.data.description}</p>`;
-    document.getElementById('check').checked = res.data.deviceStatus;
-};
-deviceInfo();
-
+// HANDLE CHANGES FROM THIS CLIENT
 const change = async (thisElement) => {
     const currentTime = await new Date().toUTCString();
     socket.emit('change', thisElement.checked);

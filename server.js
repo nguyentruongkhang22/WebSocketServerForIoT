@@ -7,11 +7,15 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const http = require('http');
 const router = require('./routes/routes');
-const url = 'http://localhost:3000/';
 const path = require('path');
 
 // SETUP
 dotenv.config({ path: './config.env' });
+const url =
+    process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000/'
+        : 'https://do-an-212.herokuapp.com/';
+
 const PORT = process.env.PORT;
 const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 const app = express();
@@ -40,7 +44,7 @@ app.use('/', router);
 io.on('connection', (socket) => {
     console.log('WEBSOCKET Connected 💯 💯 💯');
     socket.on('change', (deviceStatus) => {
-        console.log(`why? ${deviceStatus ? 'on' : 'off'}`);
+        console.log(`${deviceStatus ? 'on' : 'off'}`);
     });
     setTimeout(() => {
         socket.emit('testing', true);

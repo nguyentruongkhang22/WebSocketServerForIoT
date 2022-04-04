@@ -15,8 +15,8 @@
     <link
         href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALilTJ0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfX19SAAAAAAAAAAAAAAAAAAAAAC4pk//AAAAAAAAAAAAAAAAcWdRpZyQb78AAAAAAAAAAAAAAAAAAAAAjY2NLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcP4AAAAAkIE+XZ2PcP+dj3D/e25SCp2PcP9BOS4SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcP+dj3D/AAAAAJ2PcP8AAAAAuKZP/52PcP+dj3D/XVVDaJOFajwAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcNSdj3D/AAAAAJ2PcP+dj3D/nY9w/52PcP8AAAAAAAAAAJ2PcP+dj3DpAAAAAAAAAAAAAAAAAAAAAAAAAACdj3D/AAAAAJ2PcP+dj3D/nY9wwZ2PcP+dj3D/AAAAAGtiTjwAAAAAnY9w/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJ2PcP+dj3D/nY9w/52PcP8FBQMEAAAAAAAAAACdj3D/mJNsZwAAAAC4pk//AAAAAAAAAAAAAAAAAAAAAJ2PcP+dj3D/AAAAAJ2PcP+dj3D/o6OjSgAAAAAAAAAAnY9w/52PcP+dj3D/AAAAALimT7AAAAAAmZmZ/wAAAAAAAAAAnY9w/52PcP+dj3D/mZmZ/wAAAACdj3D/nY9w/0Q/MSQAAAAAAAAAALimT/8AAAAAuKZP+JmZmf+ZmZn/AAAAAAAAAACwqlVLmZmZ/yokHAOdj3D/nY9w2J2PcP+dj3D/AAAAALimT/+4pk//AAAAAAAAAACZmZn/mZmZ/5mZmf+ZmZn/AAAAAAAAAABFRAMBnY9w/52PcP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ/5mZmf+ZmZntAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJmZmf+ZmZn/mZmZ2gAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAB//wAA7n8AAPZfAADlHwAAyGcAANB3AADh2wAAycUAAGE6AAA6EwAADn8AAP//AAD/HwAA/x8AAA=="
         rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/style.css" />
-
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -32,9 +32,38 @@
         </div>
         <div id="right">
             <div class="promote">Smart Devices & Internet of Things Solutions.</div>
-            <div class="device-list">
-                <h2>Devices</h2>
-                <!-- Preserved -->
+            <div class="device">
+                <h2 id="name">
+                    <!-- Device Name -->
+                </h2>
+                <div id="description">
+                    <h4>Description:</h4>
+                    <!-- Preserved for description -->
+                </div>
+            </div>
+            <div class="control-feature">
+                <div class="sensor-data">
+                    <!-- Preserved for data send from sensor -->
+                    <div class="humidity">
+                        <span style="font-weight: bold;">Humidity: </span>
+                        <span id="humidity-onchange"></span>%
+                    </div>
+                    <div class="temperature">
+                        <span style="font-weight: bold;">Temperature: </span>
+                        <span id="temperature-onchange"></span>
+                    </div>
+                    <div class="heat-index">
+                        <span style="font-weight: bold;">Heat Index: </span>
+                        <span id="heat-index-onchange"></span>
+                    </div>
+                </div>
+
+                <div id="history-container">
+                    <h3>Control History</h3>
+                    <div id="history">
+                        <!-- Preserved for new actions -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -48,21 +77,8 @@
             <a href="#" class="fa fa-google"></a>
         </div>
     </footer>
-    <!-- <script src="/socket.io/socket.io.js"></script> -->
-    <script>
-        // const url = 'http://localhost:3000';
-        const url = 'https://do-an-212.herokuapp.com';
-
-
-        const loadAllDevice = async () => {
-            const res = await (await fetch(`${url}/api/v1/devices`)).json();
-            const devices = await document.querySelector('.device-list');
-            res.data.forEach((device) => {
-                devices.innerHTML += `<a href="/device/${device.deviceType}/${device._id}">🟠${device.name}</a>`;
-            });
-        };
-        loadAllDevice();
-    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../js/client.js"></script>
 </body>
 
 </html>

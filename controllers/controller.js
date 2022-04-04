@@ -1,9 +1,11 @@
+const dotenv = require('dotenv');
+dotenv.config({ path: './config.env' });
 const Device = require('../model/deviceModel');
 const { io } = require('socket.io-client');
 const User = require('../model/userModel');
 
 const url =
-    process.env.ENV === 'development'
+    process.env.NODE_ENV === 'development'
         ? 'http://localhost:3000/'
         : 'https://do-an-212.herokuapp.com/';
 
@@ -66,10 +68,7 @@ exports.removeDevice = async (req, res) => {
 exports.updateDevice = async (req, res) => {
     try {
         socket.emit('patch', req.body, req.params.id);
-        const device = await Device.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true,
-        });
+        const device = await Device.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).json({
             status: 'success',
             data: device,
@@ -108,7 +107,11 @@ exports.getDevice = async (req, res) => {
 exports.controlDevice = async (req, res) => {
     const device = await Device.findById(req.params.id);
     console.log(req.params);
-    res.sendFile(`device.html`, { root: './public/html' });
+    if (req.params.type === 'sensor') {
+        res.sendFile(`sensor.html`, { root: './public/html' });
+    } else if (req.params.type === 'regDevice') {
+        res.sendFile(`regDevice.html`, { root: './public/html' });
+    }
 };
 
 exports.loadLoginPage = async (req, res) => {

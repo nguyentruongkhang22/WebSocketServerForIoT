@@ -122,9 +122,8 @@ footer {
 }
 
 .navbar {
-    /* background-color: #316879; */
     height: 90vh;
-    width: 20vw;
+    width: 15vw;
     display: flex;
     flex-direction: column;
 }
@@ -154,8 +153,7 @@ footer {
     padding: 20px;
     background-color: whitesmoke;
     border-radius: 20px;
-    min-width: 70vw;
-    max-width: 70vw;
+    width: 80vw;
 }
 
 #logo {
@@ -169,20 +167,14 @@ footer {
 }
 
 .device {
-    /* border: solid 1px black; */
     height: 10rem;
     width: 100%;
 }
-
-/* .device-control {
-    visibility: hidden;
-} */
 
 .control-feature {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* border: solid 1px black; */
     max-width: 100%;
     max-height: 60%;
     min-width: 100%;
@@ -195,6 +187,17 @@ footer {
 }
 
 #control {
+    padding: 20px;
+    max-width: 45%;
+    min-width: 40%;
+    max-height: 45vh;
+    min-height: 45vh;
+    border-right: solid 3px;
+}
+
+.sensor-data {
+    text-align: justify;
+    font-size: 30px;
     padding: 20px;
     max-width: 45%;
     min-width: 40%;
@@ -234,4 +237,28 @@ footer {
     border-radius: 100px;
     background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
     box-shadow: inset 2px 2px 5px 0 rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 800px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    .navbar {
+        height: 90vh;
+        width: 15vw;
+        display: flex;
+        flex-direction: column;
+        display: none;
+    }
+
+    #right {
+        color: #e8a87c;
+        padding: 20px;
+        background-color: whitesmoke;
+        /* border-radius: 20px; */
+        border-radius: 0;
+        width: 100vw;
+    }
+
+    footer {
+        display: none;
+    }
 }
