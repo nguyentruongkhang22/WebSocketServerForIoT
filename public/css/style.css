@@ -242,9 +242,9 @@ footer {
         margin: auto;
         background: linear-gradient(0.3turn, #41b3a3, whitesmoke);
         color: white;
-        overflow-x: hidden;
+        overflow-x: visible;
         height: 100%;
-        width: 100%;
+        width: 120%;
     }
     .navbar {
         display: none;
