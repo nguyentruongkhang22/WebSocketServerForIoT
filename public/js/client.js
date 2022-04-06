@@ -2,8 +2,8 @@
 const socket = io();
 
 // CONFIGS
-// const url = 'http://localhost:3000';
-const url = 'https://do-an-212.herokuapp.com';
+const url = 'http://localhost:3000';
+// const url = 'https://do-an-212.herokuapp.com';
 
 // PARSE INFOS FROM URL
 const pathName = window.location.pathname.split('/');

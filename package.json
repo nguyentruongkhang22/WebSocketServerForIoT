@@ -3,6 +3,7 @@
         "body-parser": "^1.19.2",
         "dotenv": "^16.0.0",
         "express": "^4.17.3",
+        "jsonwebtoken": "^8.5.1",
         "mongoose": "^6.2.4",
         "morgan": "^1.10.0",
         "socket.io": "^4.4.1",
@@ -24,6 +25,5 @@
     "bugs": {
         "url": "https://github.com/nguyentruongkhang22/WebSocketServerForIoT/issues"
     },
-    "homepage": "https://github.com/nguyentruongkhang22/WebSocketServerForIoT#readme",
-    "devDependencies": {}
+    "homepage": "https://github.com/nguyentruongkhang22/WebSocketServerForIoT#readme"
 }

@@ -17,7 +17,11 @@
         rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="./css/style.css" />
 
-    <title>Document</title>
+    <script>
+        const url = 'http://localhost:3000';
+        // const url = 'https://do-an-212.herokuapp.com';
+    </script>
+    <title>Devices List</title>
 </head>
 
 <body>
@@ -25,7 +29,7 @@
         <div class="navbar" id="left">
             <div id="logo">💯</div>
             <div class="nav-option">
-                <a href="">Login</a>
+                <a href="/login">Login</a>
                 <a href="/">Devices List</a>
                 <a href="/add-new-device">Add New Device</a>
             </div>
@@ -50,10 +54,6 @@
     </footer>
     <!-- <script src="/socket.io/socket.io.js"></script> -->
     <script>
-        // const url = 'http://localhost:3000';
-        const url = 'https://do-an-212.herokuapp.com';
-
-
         const loadAllDevice = async () => {
             const res = await (await fetch(`${url}/api/v1/devices`)).json();
             const devices = await document.querySelector('.device-list');
