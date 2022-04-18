@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="./css/style.css" />
 
     <script>
-        // const url = 'http://localhost:3000';
-        const url = 'https://do-an-212.herokuapp.com';
+        const url = 'http://localhost:3000';
+        // const url = 'https://do-an-212.herokuapp.com';
     </script>
     <title>Devices List</title>
 </head>
@@ -29,7 +29,7 @@
         <div class="navbar" id="left">
             <div id="logo">💯</div>
             <div class="nav-option">
-                <a href="/login">Login</a>
+                <a href="/login" id="login">Login</a>
                 <a href="/">Devices List</a>
                 <a href="/add-new-device">Add New Device</a>
             </div>
@@ -62,6 +62,12 @@
             });
         };
         loadAllDevice();
+
+        if (!document.cookie) {
+            location.href = "/login";
+        } else {
+            document.getElementById('login').innerText = "Logout";
+        }
     </script>
 </body>
 

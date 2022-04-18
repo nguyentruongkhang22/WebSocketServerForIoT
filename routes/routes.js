@@ -1,22 +1,27 @@
 const express = require('express');
-const Device = require('../model/deviceModel');
-const controller = require('../controllers/controller');
-const authController = require('../controllers/authController');
+const { loadLoginPage, loadRegisterPage } = require('../utils/loadPage');
+const {
+  getAllDevices,
+  addNewDevice,
+  removeDevice,
+  updateDevice,
+  getDevice,
+  controlDevice,
+} = require('../controllers/controller');
+
+const { signup, login, cookieJwtAuth } = require('../controllers/authController');
+
 const router = express.Router();
 
 // HANDLES SINGLE DEVICE CONTROL PAGE
-router.get('/device/:type/:id', controller.controlDevice);
-router.route('/api/v1/devices').get(controller.getAllDevices).post(controller.addNewDevice);
+router.get('/device/:type/:id', cookieJwtAuth, controlDevice);
+router.route('/api/v1/devices').get(cookieJwtAuth, getAllDevices).post(addNewDevice);
 
 // AUTHENTICATION
-router.route('/register').post(authController.createNewUser).get(authController.loadRegisterPage);
-router.route('/login').get(authController.loadLoginPage).post(authController.login);
+router.route('/register').post(signup).get(loadRegisterPage);
+router.route('/login').get(loadLoginPage).post(login);
 
 // APIS
-router
-    .route('/api/v1/device/:id')
-    .delete(controller.removeDevice)
-    .get(controller.getDevice)
-    .patch(controller.updateDevice);
+router.route('/api/v1/device/:id').delete(removeDevice).get(getDevice).patch(updateDevice);
 
 module.exports = router;
