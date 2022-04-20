@@ -43,6 +43,10 @@
         width: 20vw
     }
 
+    #login-form>button {
+        margin-top: 20px;
+    }
+
     button {
         /* border: none; */
         border: groove;
@@ -61,6 +65,18 @@
         justify-content: flex-end;
     }
 
+    @media (max-width: 800px) {
+        .container {
+            margin: 10vh 10vw;
+        }
+
+        #login-form {
+            display: flex;
+            flex-direction: column;
+            width: 90%
+        }
+    }
+
 </style>
 
 <body>
@@ -70,7 +86,6 @@
             <input name="email" id="email" type="email" required>
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
-            <br>
             <button type="submit"><span style="color: #e8a87c; font-size:large">Login</span></button>
         </form>
         <div class="no-account">

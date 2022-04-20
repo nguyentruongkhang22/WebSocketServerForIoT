@@ -9,9 +9,13 @@ const {
   controlDevice,
 } = require('../controllers/controller');
 
-const { signup, login, cookieJwtAuth } = require('../controllers/authController');
+const { signup, login, logout, cookieJwtAuth } = require('../controllers/authController');
 
 const router = express.Router();
+
+router.get('/', cookieJwtAuth, (req, res) => {
+  res.sendFile(`index.html`, { root: './public/html' });
+});
 
 // HANDLES SINGLE DEVICE CONTROL PAGE
 router.get('/device/:type/:id', cookieJwtAuth, controlDevice);
@@ -20,6 +24,7 @@ router.route('/api/v1/devices').get(cookieJwtAuth, getAllDevices).post(addNewDev
 // AUTHENTICATION
 router.route('/register').post(signup).get(loadRegisterPage);
 router.route('/login').get(loadLoginPage).post(login);
+router.route('/logout').get(logout);
 
 // APIS
 router.route('/api/v1/device/:id').delete(removeDevice).get(getDevice).patch(updateDevice);

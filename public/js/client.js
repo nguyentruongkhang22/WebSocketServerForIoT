@@ -11,11 +11,12 @@ const deviceType = pathName[pathName.length - 2];
 const id = pathName[pathName.length - 1];
 
 // CHECK IF USER LOGGED IN
-if (!document.cookie) {
-  location.href = '/login';
-} else {
-  document.getElementById('login').innerText = 'Logout';
-}
+// if (!document.cookie) {
+//   location.href = '/login';
+// } else {
+//   document.getElementById('login').innerText = 'Logout';
+//   document.getElementById('login').href = '/logout';
+// }
 
 // RENDER DEVICE INFO
 (async () => {

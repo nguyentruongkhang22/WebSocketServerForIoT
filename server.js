@@ -49,9 +49,6 @@ io.on('connection', (socket) => {
   socket.on('change', (deviceStatus) => {
     console.log(`${deviceStatus ? 'on' : 'off'}`);
   });
-  setTimeout(() => {
-    socket.emit('testing', true);
-  }, 3000);
 
   socket.on('patch', async (statusChange, deviceId) => {
     console.log(statusChange, deviceId);
