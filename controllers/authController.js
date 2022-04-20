@@ -25,7 +25,7 @@ exports.signup = async (req, res) => {
       console.log(token);
       res.cookie('token', token, {
         httpOnly: true,
-        // secure: true,
+        secure: true,
       });
       res.sendFile(`login.html`, { root: './public/html' });
     }
@@ -52,7 +52,7 @@ exports.login = async (req, res, next) => {
     if (!isCorrectPassword) {
       return res.status(403).sendFile(`login.html`, { root: './public/html' });
     }
-    res.cookie('token', token, { httpOnly: false });
+    res.cookie('token', token, { httpOnly: true, secure: true });
 
     if (!user) {
       res.sendFile(`login.html`, { root: './public/html' });
@@ -67,6 +67,9 @@ exports.login = async (req, res, next) => {
 
 exports.cookieJwtAuth = async (req, res, next) => {
   try {
+    if (req.cookies.token === undefined) {
+      res.sendFile(`login.html`, { root: './public/html' });
+    }
     const token = req.cookies.token;
     const user = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
@@ -78,9 +81,11 @@ exports.cookieJwtAuth = async (req, res, next) => {
   }
 };
 
-exports.cookieCheck = async (req, res, next) => {
-  if (req.cookies && req.headers.cookie) {
-    next();
+exports.logout = (req, res, next) => {
+  if (req.cookies) {
+    res.clearCookie('token');
   }
-  res.sendFile(`login.html`, { root: './public/html' });
+  // res.write('Logged out!');
+  res.redirect('/login');
+  // res.sendFile(`login.html`, { root: './public/html' });
 };
