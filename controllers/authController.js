@@ -74,7 +74,7 @@ exports.cookieJwtAuth = async (req, res, next) => {
     const user = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
     req.user = user;
-    console.log(req.user);
+    // console.log(req.user);
     next();
   } catch (error) {
     return new Error(error);

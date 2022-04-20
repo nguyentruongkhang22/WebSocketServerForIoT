@@ -35,11 +35,15 @@ exports.getAllDevices = async (req, res) => {
 
 exports.addNewDevice = async (req, res) => {
   try {
-    const devices = await Device.create(req.body);
-    res.status(200).json({
-      status: 'success',
-      data: devices,
+    console.log(req.body);
+    const { name, description, deviceType } = req.body;
+    const device = await Device.create({
+      name,
+      description,
+      deviceType,
     });
+
+    setTimeout(() => res.redirect('/'), 2000);
   } catch (error) {
     console.log(error);
     res.status(404).json({

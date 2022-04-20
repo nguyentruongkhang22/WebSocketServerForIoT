@@ -5,3 +5,7 @@ exports.loadLoginPage = async (req, res) => {
 exports.loadRegisterPage = (req, res) => {
   res.sendFile(`register.html`, { root: './public/html' });
 };
+
+exports.loadAddNewDevicePage = (req, res) => {
+  res.sendFile('newDevice.html', { root: './public/html' });
+};

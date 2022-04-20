@@ -1,5 +1,5 @@
 const express = require('express');
-const { loadLoginPage, loadRegisterPage } = require('../utils/loadPage');
+const { loadLoginPage, loadRegisterPage, loadAddNewDevicePage } = require('../utils/loadPage');
 const {
   getAllDevices,
   addNewDevice,
@@ -10,12 +10,14 @@ const {
 } = require('../controllers/controller');
 
 const { signup, login, logout, cookieJwtAuth } = require('../controllers/authController');
+const { successRedirect } = require('../utils/redirect');
 
 const router = express.Router();
 
-router.get('/', cookieJwtAuth, (req, res) => {
-  res.sendFile(`index.html`, { root: './public/html' });
-});
+// LOAD PAGES
+router.get('/', cookieJwtAuth, (req, res) => res.sendFile(`index.html`, { root: './public/html' }));
+router.get('/add-new-device', loadAddNewDevicePage);
+// router.get('/success/:destination', successRedirect);
 
 // HANDLES SINGLE DEVICE CONTROL PAGE
 router.get('/device/:type/:id', cookieJwtAuth, controlDevice);
